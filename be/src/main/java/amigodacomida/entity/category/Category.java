@@ -1,9 +1,9 @@
 package amigodacomida.entity.category;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import amigodacomida.entity.meal.Meal;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="category")
@@ -11,10 +11,22 @@ public class Category {
     public Category() {
     }
 
-    @GeneratedValue
+
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private String type;
+
+    @OneToMany(mappedBy = "category")
+    private List<Meal> meals;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Integer getId() {
         return id;
