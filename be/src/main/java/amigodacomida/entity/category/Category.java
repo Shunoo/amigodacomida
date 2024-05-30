@@ -2,13 +2,17 @@ package amigodacomida.entity.category;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="category")
 public class Category {
+    public Category() {
+    }
+
+    @GeneratedValue
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String type;
 
@@ -16,15 +20,15 @@ public class Category {
         return id;
     }
 
-    public String getType() {
-        return type;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
