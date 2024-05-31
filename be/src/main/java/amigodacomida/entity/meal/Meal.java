@@ -3,6 +3,8 @@ package amigodacomida.entity.meal;
 import amigodacomida.entity.category.Category;
 import amigodacomida.entity.direction.Direction;
 import amigodacomida.entity.note.Note;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 @Entity
 public class Meal {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String name;
@@ -35,13 +37,16 @@ public class Meal {
     }
 
     @OneToMany(mappedBy = "meal")
+    @JsonManagedReference
     private List<Note> notes;
 
     @OneToMany(mappedBy = "meal")
+    @JsonManagedReference
     private List<Direction> directions;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonBackReference
         private Category category;
 
     public Meal(String name, String estimatedtime, String image, String video, List<Note> notes, List<Direction> directions) {
@@ -53,7 +58,8 @@ public class Meal {
         this.directions = directions;
     }
 
-
+    public Meal() {
+    }
 
     public Integer getId() {
         return id;

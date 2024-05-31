@@ -1,4 +1,7 @@
 package amigodacomida.dao.direction;
 
-public class DirectionDao {
+import amigodacomida.entity.direction.Direction;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DirectionDao extends JpaRepository<Direction,Integer> {
 }

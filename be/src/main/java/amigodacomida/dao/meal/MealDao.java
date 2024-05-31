@@ -1,4 +1,7 @@
 package amigodacomida.dao.meal;
 
-public class MealDao {
+import amigodacomida.entity.meal.Meal;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MealDao extends JpaRepository<Meal,Integer> {
 }

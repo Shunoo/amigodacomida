@@ -1,6 +1,7 @@
 package amigodacomida.entity.direction;
 
 import amigodacomida.entity.meal.Meal;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,7 @@ public class Direction {
 
     @ManyToOne
     @JoinColumn(name = "meal_id")
+    @JsonBackReference
     private Meal meal;
 
     public Direction() {
