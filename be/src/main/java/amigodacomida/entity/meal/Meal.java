@@ -46,7 +46,7 @@ public class Meal {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    @JsonBackReference
+    @JsonManagedReference
     private Category category;
 
     public Meal(String name, String estimatedtime, String image, String video, List<Note> notes, List<Direction> directions) {

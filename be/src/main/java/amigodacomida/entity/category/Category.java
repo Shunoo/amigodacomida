@@ -1,6 +1,7 @@
 package amigodacomida.entity.category;
 
 import amigodacomida.entity.meal.Meal;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -19,7 +20,7 @@ public class Category {
     private String type;
 
     @OneToMany(mappedBy = "category")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Meal> meals;
 
     public String getType() {
