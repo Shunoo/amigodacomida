@@ -47,7 +47,7 @@ public class Meal {
     @ManyToOne
     @JoinColumn(name = "category_id")
     @JsonBackReference
-        private Category category;
+    private Category category;
 
     public Meal(String name, String estimatedtime, String image, String video, List<Note> notes, List<Direction> directions) {
         this.name = name;
@@ -56,6 +56,16 @@ public class Meal {
         this.video = video;
         this.notes = notes;
         this.directions = directions;
+    }
+
+    public Meal(String name, String estimatedtime, String image, String video, List<Note> notes, List<Direction> directions, Category category) {
+        this.name = name;
+        this.estimatedtime = estimatedtime;
+        this.image = image;
+        this.video = video;
+        this.notes = notes;
+        this.directions = directions;
+        this.category = category;
     }
 
     public Meal() {
@@ -95,6 +105,14 @@ public class Meal {
 
     public String getVideo() {
         return video;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public void setVideo(String video) {

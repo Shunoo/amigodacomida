@@ -38,11 +38,24 @@ public class Category {
         this.id = id;
     }
 
+    public Category(String type, List<Meal> meals) {
+        this.type = type;
+        this.meals = meals;
+    }
+
     @Override
     public String toString() {
         return "Category{" +
                 "id=" + id +
                 ", type='" + type + '\'' +
                 '}';
+    }
+
+    public List<Meal> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(List<Meal> meals) {
+        this.meals = meals;
     }
 }
