@@ -1,8 +1,8 @@
-package amigodacomida.controller;
+package amigodacomida.controller.category;
 
 import amigodacomida.dao.category.CategoryDAO;
 import amigodacomida.entity.category.Category;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class TestController {
+public class CategoryController {
     private final CategoryDAO category;
-    public TestController(CategoryDAO category){
+    public CategoryController(CategoryDAO category){
         this.category = category;
     }
     @RequestMapping(value="/categories")
