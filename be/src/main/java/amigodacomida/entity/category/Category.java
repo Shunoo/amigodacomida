@@ -20,7 +20,7 @@ public class Category {
     private String type;
 
     @OneToMany(mappedBy = "category")
-    @JsonBackReference
+    @JsonManagedReference
     private List<Meal> meals;
 
     public String getType() {
