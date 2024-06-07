@@ -1,0 +1,10 @@
+insert into category (id,"type") values (nextval('categorysequence'),'Breakfast'); 
+insert into category (id,"type") values (nextval('categorysequence'),'LunchDinner'); 
+insert into category (id,"type") values (nextval('categorysequence'),'Protein Powder'); 
+insert into category (id,"type") values (nextval('categorysequence'),'Desserts'); 
+insert into category (id,"type") values (nextval('categorysequence'),'Side & Others'); 
+insert into category (id,"type") values (nextval('categorysequence'),'Meal Prep');
+insert into category (id,"type") values (nextval('categorysequence'),'Sauces');
+insert into category (id,"type") values (nextval('categorysequence'),'Dips');
+insert into category (id,"type") values (nextval('categorysequence'),'Soups');
+insert into category (id,"type") values (nextval('categorysequence'),'Shirataki Noodles'); 

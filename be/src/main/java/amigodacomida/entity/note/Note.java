@@ -8,7 +8,8 @@ import jakarta.persistence.*;
 public class Note {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "notesequence")
+    @SequenceGenerator(name = "notesequence", sequenceName = "notesequence",allocationSize = 1)
     private Integer id;
 
     private String text;

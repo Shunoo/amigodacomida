@@ -1,17 +1,15 @@
 package amigodacomida.entity.macro;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Macro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "macrosequence")
+    @SequenceGenerator(name = "macrosequence", sequenceName = "macrosequence",allocationSize = 1)
     private Integer id;
-
+    @Column(unique = true)
     private String type;
 
     public Macro() {

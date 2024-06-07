@@ -2,8 +2,11 @@ package amigodacomida.entity.meal;
 
 import amigodacomida.entity.category.Category;
 import amigodacomida.entity.direction.Direction;
+import amigodacomida.entity.ingredient.Ingredient;
+import amigodacomida.entity.meal_ingredient.Meal_Ingredient;
 import amigodacomida.entity.note.Note;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -12,13 +15,59 @@ import java.util.List;
 @Entity
 public class Meal {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "mealsequence")
+    @SequenceGenerator(name = "mealsequence", sequenceName = "mealsequence",allocationSize = 1)
     private Integer id;
-
+    @Column(unique = true)
     private String name;
     private String estimatedtime;
     private String image;
     private String video;
+    private String smallDescription;
+    private String tag;
+
+    @OneToMany(mappedBy = "meal")
+    @JsonManagedReference
+    private List<Note> notes;
+
+    @OneToMany(mappedBy = "meal")
+    @JsonManagedReference
+    private List<Direction> directions;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id",referencedColumnName = "id")
+    @JsonBackReference
+    private Category category;
+
+    @OneToMany(mappedBy = "meal")
+    @JsonManagedReference
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<Meal_Ingredient> ingredients;
+
+    public Meal() {
+    }
+
+
+    public Meal(String name, String estimatedtime, String image, String video, String smallDescription, String tag, List<Note> notes, List<Direction> directions, Category category, List<Meal_Ingredient> ingredients) {
+        this.name = name;
+        this.estimatedtime = estimatedtime;
+        this.image = image;
+        this.video = video;
+        this.smallDescription = smallDescription;
+        this.tag = tag;
+        this.notes = notes;
+        this.directions = directions;
+        this.category = category;
+        this.ingredients = ingredients;
+    }
+
+    public Meal(String name, String estimatedtime, String image, String video, Category category) {
+        this.name = name;
+        this.estimatedtime = estimatedtime;
+        this.image = image;
+        this.video = video;
+        this.category = category;
+    }
 
     public List<Note> getNotes() {
         return notes;
@@ -34,41 +83,6 @@ public class Meal {
 
     public void setDirections(List<Direction> directions) {
         this.directions = directions;
-    }
-
-    @OneToMany(mappedBy = "meal")
-    @JsonManagedReference
-    private List<Note> notes;
-
-    @OneToMany(mappedBy = "meal")
-    @JsonManagedReference
-    private List<Direction> directions;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    @JsonBackReference
-    private Category category;
-
-    public Meal(String name, String estimatedtime, String image, String video, List<Note> notes, List<Direction> directions) {
-        this.name = name;
-        this.estimatedtime = estimatedtime;
-        this.image = image;
-        this.video = video;
-        this.notes = notes;
-        this.directions = directions;
-    }
-
-    public Meal(String name, String estimatedtime, String image, String video, List<Note> notes, List<Direction> directions, Category category) {
-        this.name = name;
-        this.estimatedtime = estimatedtime;
-        this.image = image;
-        this.video = video;
-        this.notes = notes;
-        this.directions = directions;
-        this.category = category;
-    }
-
-    public Meal() {
     }
 
     public Integer getId() {
@@ -117,5 +131,29 @@ public class Meal {
 
     public void setVideo(String video) {
         this.video = video;
+    }
+
+    public List<Meal_Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Meal_Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String getSmallDescription() {
+        return smallDescription;
+    }
+
+    public void setSmallDescription(String smallDescription) {
+        this.smallDescription = smallDescription;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }
