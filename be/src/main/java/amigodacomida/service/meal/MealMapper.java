@@ -1,6 +1,7 @@
 package amigodacomida.service.meal;
 
 import amigodacomida.dto.category.CategoryDTO;
+import amigodacomida.dto.ingredient.IngredientDTO;
 import amigodacomida.dto.meal.MealDTO;
 import amigodacomida.entity.category.Category;
 import amigodacomida.entity.meal.Meal;
@@ -21,13 +22,14 @@ public class MealMapper implements GenericMapper<Meal, MealDTO> {
 
     @Override
     public MealDTO convertToDto(Meal meal) {
-        return new MealDTO(meal.getName(), meal.getEstimatedtime(),meal.getImage(), meal.getVideo(),meal.getCategory().getType());
+        return new MealDTO(meal.getName(), meal.getEstimatedtime(), meal.getImage(), meal.getVideo(),meal.getSmallDescription());
     }
 
     @Override
     public Meal convertToModel(MealDTO mealDTO) {
         return new Meal(mealDTO.getName(),mealDTO.getEstimatedtime(),mealDTO.getImage(), mealDTO.getVideo(),categoryMapper.convertToModel(mealDTO.getCategoryDTO()));
     }
+
 
 
 }

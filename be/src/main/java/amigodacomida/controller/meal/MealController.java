@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
 public class MealController {
     private final MealService mealService;
@@ -26,7 +27,7 @@ public class MealController {
 
     @RequestMapping(value = "/meal/search/{meal-id}")
     MealDTO findMealById(@PathVariable("meal-id")Integer id){
-        return null;
+        return mealService.getMealById(id);
     }
 
     @RequestMapping(value = "/meal/{category-type}")

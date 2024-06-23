@@ -1,7 +1,10 @@
 package amigodacomida.dto.meal;
 
 import amigodacomida.dto.category.CategoryDTO;
+import amigodacomida.dto.ingredient.IngredientDTO;
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.util.List;
 
 public class MealDTO {
      @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -16,30 +19,24 @@ public class MealDTO {
      CategoryDTO categoryDTO;
 
      @JsonInclude(JsonInclude.Include.NON_EMPTY)
-     String categoryType;
+     String smalldescription;
 
-     public MealDTO(String name, String estimatedtime, String image, String video) {
+     @JsonInclude(JsonInclude.Include.NON_EMPTY)
+     List<IngredientDTO> ingredientDTOList;
+
+     public MealDTO() {
+
+     }
+
+     public MealDTO(String name, String estimatedtime, String image, String video, String smalldescription) {
           this.name = name;
           this.estimatedtime = estimatedtime;
           this.image = image;
           this.video = video;
+          this.smalldescription = smalldescription;
      }
 
-     public MealDTO(String name, String estimatedtime, String image, String video, CategoryDTO categoryDTO) {
-          this.name = name;
-          this.estimatedtime = estimatedtime;
-          this.image = image;
-          this.video = video;
-          this.categoryDTO = categoryDTO;
-     }
 
-     public MealDTO(String name, String estimatedtime, String image, String video, String categoryType) {
-          this.name = name;
-          this.estimatedtime = estimatedtime;
-          this.image = image;
-          this.video = video;
-          this.categoryType = categoryType;
-     }
 
      public String getName() {
           return name;
@@ -81,11 +78,23 @@ public class MealDTO {
           this.categoryDTO = categoryDTO;
      }
 
-     public String getCategoryType() {
-          return categoryType;
+     public String getSmalldescription() {
+          return smalldescription;
      }
 
-     public void setCategoryType(String categoryType) {
-          this.categoryType = categoryType;
+     public void setSmalldescription(String smalldescription) {
+          this.smalldescription = smalldescription;
+     }
+
+     public MealDTO(List<IngredientDTO> ingredientDTOList) {
+          this.ingredientDTOList = ingredientDTOList;
+     }
+
+     public void setIngredientDTOList(List<IngredientDTO> ingredientDTOList) {
+          this.ingredientDTOList = ingredientDTOList;
+     }
+
+     public List<IngredientDTO> getIngredientDTOList() {
+          return ingredientDTOList;
      }
 }

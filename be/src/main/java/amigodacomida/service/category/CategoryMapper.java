@@ -27,7 +27,7 @@ public class CategoryMapper implements GenericMapper<Category, CategoryDTO> {
     private List<MealDTO> convertMealsToMealsDTO(List<Meal> mealList){
         ArrayList<MealDTO> listOfMealsDTO = new ArrayList<>();
         for (Meal meal : mealList) {
-            listOfMealsDTO.add(new MealDTO(meal.getName(), meal.getEstimatedtime(), meal.getImage(), meal.getVideo()));
+            listOfMealsDTO.add(new MealDTO(meal.getName(),meal.getEstimatedtime(),meal.getImage(),meal.getVideo(),meal.getSmallDescription()));
         }
         return listOfMealsDTO;
     }
