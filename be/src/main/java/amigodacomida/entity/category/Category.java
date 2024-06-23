@@ -18,6 +18,11 @@ public class Category {
         this.type = type;
     }
 
+    public Category(String type, List<Meal> meals) {
+        this.type = type;
+        this.meals = meals;
+    }
+
     @Id
     @GeneratedValue(generator = "categorysequence")
     @SequenceGenerator(name = "categorysequence", sequenceName = "categorysequence",allocationSize = 1)

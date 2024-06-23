@@ -61,12 +61,21 @@ public class Meal {
         this.ingredients = ingredients;
     }
 
-    public Meal(String name, String estimatedtime, String image, String video, Category category) {
+    public Meal(String name, String estimatedtime, String image, String video, Category category,String smallDescription) {
         this.name = name;
         this.estimatedtime = estimatedtime;
         this.image = image;
         this.video = video;
         this.category = category;
+        this.smallDescription = smallDescription;
+    }
+
+    public Meal(String name, String estimatedtime, String image, String video, String smallDescription) {
+        this.name = name;
+        this.estimatedtime = estimatedtime;
+        this.image = image;
+        this.video = video;
+        this.smallDescription = smallDescription;
     }
 
     public List<Note> getNotes() {
@@ -76,6 +85,8 @@ public class Meal {
     public void setNotes(List<Note> notes) {
         this.notes = notes;
     }
+
+
 
     public List<Direction> getDirections() {
         return directions;
